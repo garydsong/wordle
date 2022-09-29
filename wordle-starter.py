@@ -46,8 +46,14 @@ class Wordle:
 
 
     def play_game(self):
-        # method to run the game logic (will call other methods)
-        pass
+        print(self._logo)
+        print('Welcome to Wordle!')
+        while self._tries < 6:
+            self.guess()
+            self.update_display()
+            if self._guess == self._game_word:
+                print(f"You've done it! {self._tries}/5 tries. The word was {self._game_word}")
+                return
 
 
     def update_display(self):
