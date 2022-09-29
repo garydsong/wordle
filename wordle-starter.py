@@ -5,23 +5,23 @@ import os
 from colorama import Fore, Back, Style
 
 
-
 class Wordle:
     def __init__(self, letters=5, logo=logo):
-        self._letter = letters
+        self._letters = letters
         self._logo = logo
         self._guess = ''
         self._guesses = [[] for x in range(6)]
         self._tries = 0
         self._words = self.get_all_words()
-        self._word = self.chose_game_word()
+        self._game_word = self.chose_game_word()
         self.play_game()
 
 
     def get_all_words(self):
-        # method to get all the words from the included file
-        pass
-
+        f = open("words.txt", "r")
+        words = [ line.rstrip() for line in f ]
+        wordle_words = [ word for word in words if len(word) == self._letters]
+        return wordle_words
 
     def chose_game_word(self):
         # method to pick a random word to play with
