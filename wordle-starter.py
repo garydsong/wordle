@@ -14,6 +14,8 @@ class Wordle:
         self._guesses = [[] for x in range(6)]
         self._tries = 0
         self._words = self.get_all_words()
+        self._word = self.chose_game_word()
+        self.play_game()
 
 
     def get_all_words(self):
