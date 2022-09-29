@@ -29,8 +29,20 @@ class Wordle:
 
 
     def guess(self):
-        # method to handle user input for guesses
-        pass
+        bad_guess = True
+        while bad_guess:
+            user_guess = input(f"Guess a {self._letters} letter word: ").lower()
+            if len(user_guess) != self._letters:
+                print(f"Words must be {self._letters} letters.")
+                continue
+            elif user_guess in self._guesses:
+                print(f"You have already guessed {user._guess}")
+                continue
+            else:
+                bad_guess = False
+                self._guess = user_guess
+                self._guesses[self._tries] = self._guess
+                self._tries += 1
 
 
     def play_game(self):
