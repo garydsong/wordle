@@ -23,9 +23,9 @@ class Wordle:
         wordle_words = [ word for word in words if len(word) == self._letters]
         return wordle_words
 
+
     def chose_game_word(self):
-        # method to pick a random word to play with
-        pass
+        return choice(self._words)
 
 
     def guess(self):
