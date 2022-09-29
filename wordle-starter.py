@@ -54,6 +54,7 @@ class Wordle:
             if self._guess == self._game_word:
                 print(f"You've done it! {self._tries}/5 tries. The word was {self._game_word}")
                 return
+        print(f"You've ran out of tries. The word was {self._game_word}")
 
 
     def update_display(self):
