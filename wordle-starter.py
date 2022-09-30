@@ -36,7 +36,7 @@ class Wordle:
                 print(f"Words must be {self._letters} letters.")
                 continue
             elif user_guess in self._guesses:
-                print(f"You have already guessed {user._guess}")
+                print(f"You have already guessed {self._guess}")
                 continue
             else:
                 bad_guess = False
