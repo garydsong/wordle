@@ -2,7 +2,7 @@
 from random import choice
 from logo import logo
 import os
-from colorama import Fore, Back, Style
+from colorama import Back, Style
 
 
 class Wordle:
@@ -52,14 +52,32 @@ class Wordle:
             self.guess()
             self.update_display()
             if self._guess == self._game_word:
-                print(f"You've done it! {self._tries}/5 tries. The word was {self._game_word}")
+                print(f"You've done it! {self._tries}/5 tries. The word was {self._game_word.upper()}")
                 return
-        print(f"You've ran out of tries. The word was {self._game_word}")
+        print(f"You've ran out of tries. The word was {self._game_word.upper()}")
 
 
     def update_display(self):
-        # method to update the display in terminal on each guess
-        pass
+        os.system('clear')
+        for word in self._guesses:
+            if len(word) > 0:
+                display = []
+                for index, letter in enumerate(word):
+                    if letter == self._game_word[index]:
+                        display.extend([Back.GREEN, letter.upper(), Style.RESET_ALL, ' '])
+                    elif letter in self._game_word and letter != self._game_word[index]:
+                        display.extend([Back.YELLOW, letter.upper(), Style.RESET_ALL, ' '])
+                    else:
+                        display.extend([Style.RESET_ALL, letter.upper(), Style.RESET_ALL, ' '])
+                for index, word in enumerate(display):
+                    if index == (len(display) - 1):
+                        print(word)
+                    else:
+                        print(word, end='')
+
+            else:
+                display = [ "_" for x in range(len(self._game_word))]
+                print(' '.join(display))
 
 
 Wordle(5)
